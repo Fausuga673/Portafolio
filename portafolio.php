@@ -83,7 +83,10 @@ $resultado = $ObjConexion->consultar("SELECT * FROM `proyecto`");
                         <img src="imagenes/<?php echo $proyecto['imagen']; ?>" alt="<?php echo $proyecto['imagen']; ?>">
                     </td>
                     <td><?php echo $proyecto['descripcion']; ?></td>
-                    <td><a name="" id="" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id']; ?>">Eliminar</a></td>
+                    <td>
+                        <a name="" id="" class="btn btn-primary" href="editar.php?editar=<?php echo $proyecto['id']; ?>">Editar</a>
+                        <a name="" id="" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id']; ?>">Eliminar</a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
