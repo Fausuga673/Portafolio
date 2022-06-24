@@ -3,26 +3,27 @@
 
 <?php
 
+if ($_GET) {
+    $id = $_GET['editar'];
+}
+
 if ($_POST) {
 
     if(isset($_POST['enviar'])) {
 
-/*         $id = $_GET['id']; */
         $nombre=$_POST["nombre"];
         $descripcion=$_POST["descripcion"];
-        $sql = "UPDATE `proyecto` SET `nombre` = '$nombre', `descripcion` = '$descripcion' WHERE `proyecto`.`id` = 7";
+        $sql = "UPDATE `proyecto` SET `nombre` = '$nombre', `descripcion` = '$descripcion' WHERE `proyecto`.`id` = $id";
         
         $resultado = new conexion;
         $resultado->ejecutar($sql);
-        /*  $proyecto=mysql_fetch_assoc($resultado); */
+        
+}
 
-    } else {
-    }
 }
 
 $ObjConexion = new conexion();
 $resultado = $ObjConexion->consultar("SELECT * FROM `proyecto`");
-
 
 ?>
 
@@ -34,9 +35,9 @@ $resultado = $ObjConexion->consultar("SELECT * FROM `proyecto`");
             Datos del proyecto
         </div>
         <div class="card-body">
-            <form action="<?=$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+            <form action="<?php $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
 
-                Nombre del proyecto: <input class="form-control" type="text" name="nombre" value="<?php echo $resultado['nombre']; ?>">
+                Nombre del proyecto: <input class="form-control" type="text" name="nombre">
                 <br>
                 Descripcion:
                     <textarea class="form-control" name="descripcion" id="" rows="3"></textarea>
